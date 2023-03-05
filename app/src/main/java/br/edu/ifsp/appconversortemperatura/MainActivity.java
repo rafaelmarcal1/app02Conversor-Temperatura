@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Variaveis privadas para os elementos do Layout... quer dizer "Laioute"
     private EditText valorEditText;
     private Button converterCelsius;
+    private Button converterFahrenheit;
     private TextView valorConvertido;
 
     @Override
@@ -25,14 +26,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         valorEditText = findViewById(R.id.editext_value);
         converterCelsius = findViewById(R.id.botao_converter_celsius);
         converterCelsius.setOnClickListener(this);
+        converterFahrenheit = findViewById(R.id.botao_converter_ferenheit);
+        converterFahrenheit.setOnClickListener(this);
         valorConvertido = findViewById(R.id.textview_value_converted);
     }
 
-    //Chama Função na View
+    //Chama Funções na View
     @Override
     public void onClick(View view) {
         if(view == converterCelsius){
             getCelsiusConvertion();
+        }
+        if(view == converterFahrenheit){
+            getFahrenheitConvertion();
         }
     }
 
@@ -60,14 +66,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         valorConvertido.setText(String.format("%.2f °C", valor));
     }
+
+    //Função que converte o valor de Celsius para Fahrenheit
+    private void getFahrenheitConvertion() {
+        double valor = pegaValor();
+
+        valor = valor * 1.8 + 32;
+
+        valorConvertido.setText(String.format("%.2f °F",valor));
+    }
 }
-
-
-
-
-
-
-
-
-
-
