@@ -2,4 +2,6 @@
     <string name="app_name">ConversorTemperatura</string>
     <string name="converter_para_celsius">Celsius</string>
     <string name="ferenheit">fahrenheit</string>
+    <string name="kevin">Kelvin / P Celsius</string>
+    <string name="kelvin_p_ferenheit">Kelvin / P Ferenheit</string>
 </resources>

@@ -2,6 +2,7 @@ package br.edu.ifsp.appconversortemperatura;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +16,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText valorEditText;
     private Button converterCelsius;
     private Button converterFahrenheit;
+    private Button converterKelvin;
+    private Button converterKelvinF;
     private TextView valorConvertido;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         converterCelsius.setOnClickListener(this);
         converterFahrenheit = findViewById(R.id.botao_converter_ferenheit);
         converterFahrenheit.setOnClickListener(this);
+        converterKelvin = findViewById(R.id.botao_converter_kelvin);
+        converterKelvin.setOnClickListener(this);
+        converterKelvinF = findViewById(R.id.botao_converter_kelvinF);
+        converterKelvinF.setOnClickListener(this);
         valorConvertido = findViewById(R.id.textview_value_converted);
     }
 
@@ -40,6 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view == converterFahrenheit){
             getFahrenheitConvertion();
         }
+        if (view == converterKelvin){
+            getKelvinConvertionC();
+        }
+        if (view == converterKelvinF){
+            getKelvinConvertionF();
+        }
+    }
+
+    //Convertendo Fa
+    private void getKelvinConvertionF() {
     }
 
     //Fazendo tratamento de exceção
@@ -72,6 +90,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         double valor = pegaValor();
 
         valor = valor * 1.8 + 32;
+
+        valorConvertido.setText(String.format("%.2f °F",valor));
+    }
+
+    //Converter Celsius para Kelvin
+    private void getKelvinConvertionC() {
+        double valor = pegaValor();
+
+        valor = valor + 273.15;
 
         valorConvertido.setText(String.format("%.2f °F",valor));
     }
